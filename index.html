@@ -21,69 +21,90 @@
         height: 100vh;
       }
 
-      /* Sidebar Styles */
-      #sidebar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 200px;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.75);
-        color: #fff;
-        z-index: 9999;
-        padding-top: 10px;
-        overflow-y: auto;
-        transition: left 0.3s ease;
-      }
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 230px;
+  height: 100%;
+  background: rgba(15, 15, 30, 0.75);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  z-index: 9999;
+  padding: 20px 15px;
+  overflow-y: auto;
+  transition:  0.3s ease, opacity 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-      #sidebar.collapsed {
-        left: -220px;
-      }
+#sidebar.collapsed {
+  left: -300px;
+}
 
-      #sidebar h3 {
-        margin: 10px;
-        font-size: 16px;
-        text-align: center;
-        border-bottom: 1px solid #555;
-        padding-bottom: 5px;
-      }
+#sidebar h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid #555;
+  padding-bottom: 8px;
+  letter-spacing: 1px;
+}
 
-      #sidebar ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-      #sidebar li {
-        padding: 10px;
-        cursor: pointer;
-        border-bottom: 1px solid #444;
-      }
+#sidebar li {
+  padding: 12px 15px;
+  margin: 6px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-      #sidebar li:hover {
-        background-color: #555;
-      }
+#sidebar li:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+  color: #ffd700;
+}
 
-      /* Toggle button */
-      #toggleButton {
-        position: absolute;
-        top: 10px;
-        left: 210px;
-        z-index: 10000;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        padding: 8px 12px;
-        cursor: pointer;
-        font-size: 18px;
-        border-radius: 4px;
-        transition: left 0.3s ease;
-      }
 
-      #toggleButton.collapsed {
-        left: 10px;
-      }
+#sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
 
+
+#toggleButton {
+  position: fixed;
+  top: 15px;
+  right: 240px;
+  z-index: 10000;
+  background-color: rgba(30, 30, 30, 0.85);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 8px;
+  transition: left 0.3s ease, background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#toggleButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#toggleButton.collapsed {
+  right: 10px;
+}
       /* Custom hotspot icon */
       .custom-icon {
         background-image: url("1.png");
@@ -162,7 +183,6 @@
           "firstScene": "Outdoor_1",
           "sceneFadeDuration": 1000,
           "autoLoad": true,
-          "hotSpotDebug":true
         },
         "scenes": {
           "Outdoor_1": {
@@ -383,6 +403,16 @@
                 "type": "scene",
                 "text": "Back to Lift",
                 "sceneId": "Lift",
+                "cssClass": "custom-icon"
+              },
+                 {
+              "pitch": -11,
+                "yaw": -2 ,
+                "Centre Pitch": -5,
+                "Centre Yaw": -4,
+                "type": "scene",
+                "text": "Corridor 3",
+                "sceneId": "Corridor_3",
                 "cssClass": "custom-icon"
               }
             ]
@@ -608,5 +638,27 @@
         }
       });
     </script>
+    <script>
+  document.addEventListener("fullscreenchange", () => {
+    const fsElement = document.fullscreenElement;
+    const sidebar = document.getElementById('sidebar');
+    const button = document.getElementById('toggleButton');
+
+    if (fsElement) {
+      // Move sidebar and button into the fullscreen element
+      if (!fsElement.contains(sidebar)) {
+        fsElement.appendChild(sidebar);
+      }
+      if (!fsElement.contains(button)) {
+        fsElement.appendChild(button);
+      }
+    } else {
+      // Move sidebar and button back to body when exiting fullscreen
+      document.body.appendChild(sidebar);
+      document.body.appendChild(button);
+    }
+  });
+</script>
+
   </body> 
   </html>
