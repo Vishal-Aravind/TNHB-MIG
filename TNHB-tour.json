@@ -1,0 +1,285 @@
+{
+  "default": {
+    "firstScene": "Outdoor_1",
+    "sceneFadeDuration": 1000,
+    "autoLoad": true
+  },
+  "scenes": {
+    "Outdoor_1": {
+      "title": "Outdoor 1",
+      "type": "equirectangular",
+      "panorama": "./Outdoor_1.jpg",
+      "hotSpots": [
+        { "pitch": 0, "yaw": 90, "type": "scene", "text": "Outdoor 2", "sceneId": "Outdoor_2" }
+      ]
+    },
+    "Outdoor_2": {
+      "title": "Outdoor 2",
+      "type": "equirectangular",
+      "panorama": "./Outdoor_2.jpg",
+      "hotSpots": [
+        { "pitch": 0, "yaw": 90, "type": "scene", "text": "Outdoor 3", "sceneId": "Outdoor_3" },
+        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Outdoor 1", "sceneId": "Outdoor_1" }
+      ]
+    },
+    "Outdoor_3": {
+      "title": "Outdoor 3",
+      "type": "equirectangular",
+      "panorama": "./Outdoor_3.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        { "pitch": 0, "yaw": 90, "type": "scene", "text": "Outdoor 4", "sceneId": "Outdoor_4" },
+        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Outdoor 2", "sceneId": "Outdoor_2" }
+      ]
+    },
+    "Outdoor_4": {
+      "title": "Outdoor 4",
+      "type": "equirectangular",
+      "panorama": "./Outdoor_4.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        { "pitch": 0, "yaw": 90, "type": "scene", "text": "Outdoor 5", "sceneId": "Outdoor_5" },
+        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Outdoor 3", "sceneId": "Outdoor_3" }
+      ]
+    },
+    "Outdoor_5": {
+      "title": "Outdoor 5",
+      "type": "equirectangular",
+      "panorama": "./Outdoor_5.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        { "pitch": 0, "yaw": 90, "type": "scene", "text": "Outdoor 6", "sceneId": "Outdoor_6" },
+        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Outdoor 4", "sceneId": "Outdoor_4" }
+      ]
+    },
+    "Outdoor_6": {
+      "title": "Outdoor 6",
+      "type": "equirectangular",
+      "panorama": "./Outdoor_6.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        { "pitch": 0, "yaw": 0, "type": "scene", "text": "Lift", "sceneId": "Lift" },
+        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Outdoor 5", "sceneId": "Outdoor_5" }
+      ]
+    },
+    "Lift": {
+      "title": "Lift Area",
+      "type": "equirectangular",
+      "panorama": "./Lift.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        { "pitch": 0, "yaw": 90, "type": "scene", "text": "Corridor 1", "sceneId": "Corridor_1" },
+        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Outdoor 6", "sceneId": "Outdoor_6" }
+      ]
+    },
+    "Corridor_1": {
+      "title": "Corridor 1",
+      "type": "equirectangular",
+      "panorama": "./Corridor_1.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        { "pitch": 0, "yaw": 0, "type": "scene", "text": "Corridor 2", "sceneId": "Corridor_2" },
+        { "pitch": 0, "yaw": -90, "type": "scene", "text": "Lift", "sceneId": "Lift" }
+      ]
+    },
+    "Corridor_2": {
+      "title": "Corridor 2",
+      "type": "equirectangular", 
+      "panorama": "./Corridor_2.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 90,
+          "type": "scene",
+          "text": "Hall",
+          "sceneId": "L_Hall"
+        },
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Corridor 1",
+          "sceneId": "Corridor_1"
+        }
+      ]
+    },
+    "L_Hall": {
+      "title": "Hall",
+      "type": "equirectangular", 
+      "panorama": "./L_Hall.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 45,
+          "type": "scene",
+          "text": "Bedroom 1",
+          "sceneId": "L_Bed_1_1"
+        },
+        {
+          "pitch": 0,
+          "yaw": 90,
+          "type": "scene",
+          "text": "Kitchen",
+          "sceneId": "L_Kitchen"
+        },
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Corridor 2",
+          "sceneId": "Corridor_2"
+        }
+      ]
+    },
+    "L_Bed_1_1": {
+      "title": "Bedroom 1 View 1",
+      "type": "equirectangular", 
+      "panorama": "./L_Bed_1_1.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 45,
+          "type": "scene",
+          "text": "Bedroom 1 View 2",
+          "sceneId": "L_Bed_1_2"
+        },
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Hall",
+          "sceneId": "L_Hall"
+        }
+      ]
+    },
+    "L_Bed_1_2": {
+      "title": "Bedroom 1 View 2",
+      "type": "equirectangular", 
+      "panorama": "./L_Bed_1_2.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 90,
+          "type": "scene",
+          "text": "Bathroom 1",
+          "sceneId": "L_Bathroom_1"
+        },
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Bedroom 1 View 1",
+          "sceneId": "L_Bed_1_1"
+        }
+      ]
+    },
+    "L_Bathroom_1": {
+      "title": "Bathroom 1",
+      "type": "equirectangular", 
+      "panorama": "./L_Bathroom_1.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Bedroom 1 View 2",
+          "sceneId": "L_Bed_1_2"
+        }
+      ]
+    },
+    "L_Kitchen": {
+      "title": "Kitchen",
+      "type": "equirectangular", 
+      "panorama": "./L_Kitchen.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 45,
+          "type": "scene",
+          "text": "Utility",
+          "sceneId": "L_Utility"
+        },
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Hall",
+          "sceneId": "L_Hall"
+        }
+      ]
+    },
+    "L_Utility": {
+      "title": "Utility",
+      "type": "equirectangular", 
+      "panorama": "./L_Utility.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Kitchen",
+          "sceneId": "L_Kitchen"
+        }
+      ]
+    },
+    "L_Bed_2_1": {
+      "title": "Bedroom 2 View 1",
+      "type": "equirectangular", 
+      "panorama": "./L_Bed_2_1.jpg",
+      "hfov": 100,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 45,
+          "type": "scene",
+          "text": "Bedroom 2 View 2",
+          "sceneId": "L_Bedroom_2_2"
+        }
+      ]
+    },
+    "L_Bedroom_2_2": {
+      "title": "Bedroom 2 View 2",
+      "type": "equirectangular", 
+      "panorama": "./L_Bedroom_2_2.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": 90,
+          "type": "scene",
+          "text": "Bathroom 2",
+          "sceneId": "L_Bathroom_2"
+        },
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Bedroom 2 View 1",
+          "sceneId": "L_Bed_2_1"
+        }
+      ]
+    },
+    "L_Bathroom_2": {
+      "title": "Bathroom 2",
+      "type": "equirectangular", 
+      "panorama": "./L_Bathroom_2.jpg",
+      "hfov": 150,
+      "hotSpots": [
+        {
+          "pitch": 0,
+          "yaw": -90,
+          "type": "scene",
+          "text": "Bedroom 2 View 2",
+          "sceneId": "L_Bedroom_2_2"
+        }
+      ]
+    }
+  }
+}
