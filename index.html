@@ -2,6 +2,8 @@
   <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
     <title>TNHB 360 Virtual Tour</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
@@ -120,6 +122,21 @@
       .pnlm-context-menu {
         display: none !important;
       }
+
+  #iOSFullscreenBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10001;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #888;
+  border-radius: 5px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
     </style>
   </head>
   <body >
@@ -157,6 +174,8 @@
     <!-- Toggle Button -->
     <button id="toggleButton" class="collapsed" onclick="toggleSidebar()">☰</button>
 
+<button id="iOSFullscreenBtn" style="display: none;">⛶</button>
+
     <!-- Viewer Container -->
     <div id="panorama"></div>
 
@@ -182,7 +201,7 @@
         "default": {
           "firstScene": "Outdoor_1",
           "sceneFadeDuration": 1000,
-          "autoLoad": true,
+          "autoLoad": true
         },
         "scenes": {
           "Outdoor_1": {
@@ -258,6 +277,8 @@
                 "type": "scene",
                 "text": "Back to Outdoor 2",
                 "sceneId": "Outdoor_2",
+                "targetYaw":135,
+                "targetPitch":3,
                 "cssClass": "custom-icon"
               }
             ]
@@ -287,6 +308,8 @@
                 "type": "scene",
                 "text": "Back to Outdoor 3",
                 "sceneId": "Outdoor_3",
+                "targetYaw":65,
+                "targetPitch":0,
                 "cssClass": "custom-icon"
               }
             ]
@@ -316,6 +339,8 @@
                 "type": "scene",
                 "text": "Back to Outdoor 4",
                 "sceneId": "Outdoor_4",
+                "targetYaw":135,
+                "targetPitch":3,
                 "cssClass": "custom-icon"
               }
             ]
@@ -345,6 +370,8 @@
                 "type": "scene",
                 "text": "Back to Outdoor 5",
                 "sceneId": "Outdoor_5",
+                "targetYaw":172,
+                "targetPitch":3,
                 "cssClass": "custom-icon"
               }
             ]
@@ -352,14 +379,14 @@
           "Lift": {
             "title": "Lift",
             "panorama": "Lift.jpg",
-            "yaw": 24,
-            "pitch":-16,
+            "yaw": 27,
+            "pitch":-5,
             "hfov": 150,
             "hotSpots": [
               {
-                "pitch": -37,
+                "pitch": -29,
                 "yaw": 22,
-                "Centre Pitch": -15,
+                "Centre Pitch": 0,
                 "Centre Yaw": 29,
                 "type": "scene",
                 "text": "Go to Corridor 1",
@@ -367,13 +394,15 @@
                 "cssClass": "custom-icon"
               },
               {
-              "pitch": -52,
-                "yaw": -155,
-                "Centre Pitch": -18,
-                "Centre Yaw": 202,
+               "pitch": -39,
+                "yaw": -157,
+                "Centre Pitch": -2,
+                "Centre Yaw": 210,
                 "type": "scene",
                 "text": "Back to Outdoor 6",
                 "sceneId": "Outdoor_6",
+                "targetYaw":255,
+                "targetPitch":-5,
                 "cssClass": "custom-icon"
               }
             ]
@@ -381,8 +410,8 @@
           "Corridor_1": {
             "title": "Corridor 1",
             "panorama": "Corridor_1.jpg",
-            "yaw": -5,
-            "pitch": -5,
+            "yaw": 5,
+            "pitch": -8,
             "hfov": 150,
             "hotSpots": [
               {
@@ -396,6 +425,16 @@
                 "cssClass": "custom-icon"
               },
               {
+               "pitch": -11,
+                "yaw": -2,
+                "Centre Pitch": -8,
+                "Centre Yaw": 5,
+                "type": "scene",
+                "text": "Go to Corridor 3",
+                "sceneId": "Corridor_3",
+                "cssClass": "custom-icon"
+              },
+              {
               "pitch": -34,
                 "yaw": -93,
                 "Centre Pitch": -9,
@@ -403,24 +442,16 @@
                 "type": "scene",
                 "text": "Back to Lift",
                 "sceneId": "Lift",
+                "targetYaw":207,
+                "targetPitch":-2,
                 "cssClass": "custom-icon"
               },
-                 {
-              "pitch": -11,
-                "yaw": -2 ,
-                "Centre Pitch": -5,
-                "Centre Yaw": -4,
-                "type": "scene",
-                "text": "Corridor 3",
-                "sceneId": "Corridor_3",
-                "cssClass": "custom-icon"
-              }
             ]
           },
           "Corridor_2": {
             "title": "Corridor 2",
             "panorama": "Corridor_2.jpg",
-            "yaw": -110,
+            "yaw": -104,
             "pitch": -5,
             "hfov": 150,
             "hotSpots": [
@@ -441,7 +472,9 @@
                 "Centre Yaw": 75,
                 "type": "scene",
                 "text": "Back to Corridor 1",
-                "sceneId": "Lift",
+                "sceneId": "Corridor_1",
+                "targetYaw":-91,
+                "targetPitch":-7,
                 "cssClass": "custom-icon"
               }
             ]
@@ -471,6 +504,8 @@
                 "type": "scene",
                 "text": "Back to Corridor 2",
                 "sceneId": "Corridor_2",
+                "targetYaw":73,
+                "targetPitch":-5,
                 "cssClass": "custom-icon"
               }
             ]
@@ -500,6 +535,8 @@
                 "type": "scene",
                 "text": "Back to Corridor 3",
                 "sceneId": "Corridor_3",
+                "targetYaw":192,
+                "targetPitch":-2,
                 "cssClass": "custom-icon"
               }
             ]
@@ -513,7 +550,7 @@
             "hotSpots": [
               { "pitch": -31 , "yaw": -176 ,"Centre Pitch":-37 , "Centre Yaw":187, "type": "scene", "text": "Living Hall - View 2", "sceneId": "M_Hall_2", "cssClass": "custom-icon" },
               { "pitch": -30, "yaw": 105 ,"Centre Pitch":-18 , "Centre Yaw":102, "type": "scene", "text": "Path", "sceneId": "M_Path", "cssClass": "custom-icon" },
-              { "pitch": -23, "yaw": 32,"Centre Pitch":-16 , "Centre Yaw":1, "type": "scene", "text": "Back to Corridor 4", "sceneId": "Corridor_4", "cssClass": "custom-icon" }
+              { "pitch": -23, "yaw": 32,"Centre Pitch":-16 , "Centre Yaw":1, "type": "scene", "text": "Back to Corridor 4", "sceneId": "Corridor_4", "targetYaw":-87, "targetPitch":-2, "cssClass": "custom-icon" }
             ]
           },
            "M_Hall_2": {
@@ -525,7 +562,7 @@
             "hotSpots": [
               { "pitch": -32 , "yaw": -178,"Centre Pitch":-7 , "Centre Yaw":175, "type": "scene", "text": "Balcony", "sceneId": "M_Balcony", "cssClass": "custom-icon" },
               { "pitch": -30, "yaw": -77 ,"Centre Pitch":-14 , "Centre Yaw":277, "type": "scene", "text": "Bedroom 2", "sceneId": "M_Bed_1_1", "cssClass": "custom-icon" },
-              { "pitch": -38, "yaw": 0,"Centre Pitch":-14 , "Centre Yaw":0, "type": "scene", "text": "Back to Living Hall - View 1 ", "sceneId": "M_Hall_1", "cssClass": "custom-icon" }
+              { "pitch": -38, "yaw": 0,"Centre Pitch":-14 , "Centre Yaw":0, "type": "scene", "text": "Back to Living Hall - View 1 ", "sceneId": "M_Hall_1", "targetYaw":145, "targetPitch":-7, "cssClass": "custom-icon" }
             ]
           },
              "M_Balcony": {
@@ -535,7 +572,7 @@
             "pitch": -7,
             "hfov": 150,
             "hotSpots": [
-              { "pitch": -31 , "yaw": 8 ,"Centre Pitch":-15 , "Centre Yaw":13, "type": "scene", "text": "Back to Living Hall - View 2", "sceneId": "M_Hall_2", "cssClass": "custom-icon" }
+              { "pitch": -31 , "yaw": 8 ,"Centre Pitch":-15 , "Centre Yaw":13, "type": "scene", "text": "Back to Living Hall - View 2", "sceneId": "M_Hall_2", "targetYaw":-4.7, "targetPitch":-5, "cssClass": "custom-icon" }
             ]
           },
           "M_Bed_1_1": {
@@ -557,7 +594,7 @@
             "pitch": -10,
             "hfov": 150,
             "hotSpots": [
-              { "pitch": -27 , "yaw": -166 ,"Centre Pitch":-10 , "Centre Yaw":181, "type": "scene", "text": "Back to View 1", "sceneId": "M_Bed_1_1", "cssClass": "custom-icon" }
+              { "pitch": -27 , "yaw": -166 ,"Centre Pitch":-10 , "Centre Yaw":181, "type": "scene", "text": "Back to View 1", "sceneId": "M_Bed_1_1", "targetYaw":-30.7, "targetPitch":-11.77, "cssClass": "custom-icon" }
             ]
           },
             "M_Bathroom_1": {
@@ -573,8 +610,8 @@
            "M_Path": {
             "title": "Path",
             "panorama": "M_Path.jpg",
-            "yaw": -8.9,
-            "pitch": -8.1,
+            "yaw": -5,
+            "pitch": -11,
             "hfov": 150,
             "hotSpots": [
               { "pitch": -44 , "yaw": -81 ,"Centre Pitch":-19 , "Centre Yaw":-82 , "type": "scene", "text": "Kitchen", "sceneId": "M_Kitchen", "cssClass": "custom-icon" },
@@ -601,7 +638,7 @@
            "hfov": 150,
            "hotSpots": [
               { "pitch": -22 , "yaw": 175 ,"Centre Pitch":2 , "Centre Yaw":175, "type": "scene", "text": "Utility", "sceneId": "M_Utility", "cssClass": "custom-icon" },
-              { "pitch": -41 , "yaw": -84 ,"Centre Pitch":-15 , "Centre Yaw":267, "type": "scene", "text": "Back to Path", "sceneId": "M_Path", "cssClass": "custom-icon" },
+              { "pitch": -41 , "yaw": -84 ,"Centre Pitch":-15 , "Centre Yaw":267, "type": "scene", "text": "Back to Path", "sceneId": "M_Path", "targetYaw":80, "targetPitch":-7, "cssClass": "custom-icon" },
             ]
           },
            "M_Utility": {
@@ -611,7 +648,7 @@
             "pitch": -21,
             "hfov": 150,
             "hotSpots": [
-              { "pitch": -28 , "yaw": 2 ,"Centre Pitch":-21 , "Centre Yaw":10, "type": "scene", "text": "Back to Kitchen", "sceneId": "M_Kitchen", "cssClass": "custom-icon" }
+              { "pitch": -28 , "yaw": 2 ,"Centre Pitch":-21 , "Centre Yaw":10, "type": "scene", "text": "Back to Kitchen", "sceneId": "M_Kitchen", "targetYaw":-82, "targetPitch":-14, "cssClass": "custom-icon" }
             ]
           },
           "M_Bed_2_1": {
@@ -622,17 +659,17 @@
           "hfov": 150,
           "hotSpots": [
               { "pitch": -37 , "yaw": 137 ,"Centre Pitch":-7 , "Centre Yaw":130, "type": "scene", "text": "View 2", "sceneId": "M_Bed_2_2", "cssClass": "custom-icon" },
-              { "pitch": -33 , "yaw": -5,"Centre Pitch":-7 , "Centre Yaw":5, "type": "scene", "text": "Back to Path", "sceneId": "M_Path", "cssClass": "custom-icon" },
+              { "pitch": -33 , "yaw": -5,"Centre Pitch":-7 , "Centre Yaw":5, "type": "scene", "text": "Back to Path", "sceneId": "M_Path", "targetYaw":-90.7, "targetPitch":-10, "cssClass": "custom-icon" },
             ]
           },
           "M_Bed_2_2": {
           "title": "Bedroom 2 - View 2",
           "panorama": "M_Bed_2_2.jpg",
-          "yaw": 310,
+          "yaw": 321,
           "pitch": -7,
           "hfov": 150,
           "hotSpots": [
-              { "pitch": -36 , "yaw": -40 ,"Centre Pitch":-7 , "Centre Yaw":130, "type": "scene", "text": "Back to View 1", "sceneId": "M_Bed_2_1", "cssClass": "custom-icon" }
+              { "pitch": -36 , "yaw": -40 ,"Centre Pitch":-7 , "Centre Yaw":130, "type": "scene", "text": "Back to View 1", "sceneId": "M_Bed_2_1", "targetYaw":-2, "targetPitch":-10.9, "cssClass": "custom-icon" }
             ]
           },
         }
@@ -658,6 +695,16 @@
       document.body.appendChild(button);
     }
   });
+</script>
+
+<script>
+  function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+
+  if (isIOS()) {
+    document.getElementById('iOSFullscreenBtn').style.display = 'block';
+  }
 </script>
 
   </body> 
