@@ -2,15 +2,78 @@
   <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 
     <title>TNHB 360 Virtual Tour</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
     <style>
+
+#rotateOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+#rotateOverlay img {
+  max-width: 300px; 
+  width: 50vw;
+  height: auto;
+  margin-bottom: 24px;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+#rotateOverlay span {
+  font-size: 45px; 
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+@media only screen and (orientation: portrait) {
+  #rotateOverlay {
+    display: flex;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  #rotateWarning {
+    display: block;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  #rotateWarning {
+    display: none;
+  }
+}
+
+
       html, body {
         margin: 0;
         padding: 0;
@@ -123,20 +186,6 @@
         display: none !important;
       }
 
-#iOSFullscreenBtn {
-  position: fixed;
-  top: 10px;
-  right: 50px;
-  z-index: 9999;
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 16px;
-  opacity: 0.8;
-}
-
 
     </style>
   </head>
@@ -175,7 +224,11 @@
     <!-- Toggle Button -->
     <button id="toggleButton" class="collapsed" onclick="toggleSidebar()">☰</button>
 
-<button id="iOSFullscreenBtn" style="display: none;">⛶</button>
+<div id="rotateOverlay">
+  <img src="rotate.png" alt="Rotate your device" />
+  <span>Please rotate your device<br>to landscape mode</span>
+</div>
+
 
     <!-- Viewer Container -->
     <div id="panorama"></div>
@@ -697,46 +750,6 @@
     }
   });
 </script>
-
-<script>
-  function isIOS() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  }
-
-  if (isIOS()) {
-    document.getElementById('iOSFullscreenBtn').style.display = 'block';
-  }
-</script>
-
-<script>
-  const fullscreenBtn = document.getElementById('iOSFullscreenBtn');
-  let isFullscreenSimulated = false;
-
-  fullscreenBtn.addEventListener('click', () => {
-    const panorama = document.getElementById('panorama');
-
-    if (!isFullscreenSimulated) {
-      panorama.style.position = 'fixed';
-      panorama.style.top = '0';
-      panorama.style.left = '0';
-      panorama.style.width = '100vw';
-      panorama.style.height = '100vh';
-      panorama.style.zIndex = '9998';
-      fullscreenBtn.textContent = '⛶'; // Optional: change to ⏏ to show "exit"
-      isFullscreenSimulated = true;
-    } else {
-      panorama.style.position = '';
-      panorama.style.top = '';
-      panorama.style.left = '';
-      panorama.style.width = '';
-      panorama.style.height = '';
-      panorama.style.zIndex = '';
-      fullscreenBtn.textContent = '⛶';
-      isFullscreenSimulated = false;
-    }
-  });
-</script>
-
 
   </body> 
   </html>
