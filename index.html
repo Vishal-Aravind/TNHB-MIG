@@ -186,6 +186,55 @@
         display: none !important;
       }
 
+/* Message in scene1 */
+
+#scene1InfoBox {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: none;
+}
+
+#scene1InfoBox .info-content {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 16px;
+  padding: 20px 30px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 0.5s ease;
+}
+
+#scene1InfoBox .info-content img {
+  width: 63px;
+  height: 63px;
+  margin-bottom: -10 px;
+}
+
+#scene1InfoBox .info-content p {
+  margin: 10px 0 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#scene1InfoBox .info-content button {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#scene1InfoBox .info-content button:hover {
+  background: sandybrown;
+}
 
     </style>
   </head>
@@ -229,6 +278,15 @@
   <span>Please rotate your device<br>to landscape mode</span>
 </div>
 
+ <!-- Message box in scene 1-->
+<div id="scene1InfoBox">
+  <div class="info-content">
+    <img src="1.png" alt="Ring Icon">
+    <p>Click the ring to move</p>
+    <p>நகர, வட்டத்தை அழுத்தவும்</p>
+    <button onclick="dismissInfo()">OK/சரி</button>
+  </div>
+</div>
 
     <!-- Viewer Container -->
     <div id="panorama"></div>
@@ -236,13 +294,25 @@
     <!-- Script Section -->
     <script>
       let viewer;
+//Message box in scene 1
+let outdoor1InfoShown = false;
+let outdoor1InfoDismissed = false;   // Global flag
 
-      function loadSceneById(id) {
-        if (viewer) {
-          viewer.loadScene(id);
-        }
-      }
-
+//Message box in scene 1
+function dismissInfo() {
+  document.getElementById('scene1InfoBox').style.display = 'none';
+  outdoor1InfoShown = true;  // Set flag to true so it won't show again
+}
+  
+function loadSceneById(id) {
+  if (viewer) {
+    viewer.loadScene(id);
+    // Message box in scene 1
+    if (id === 'Outdoor_1' && !outdoor1InfoShown) {
+      document.getElementById('scene1InfoBox').style.display = 'block';
+    }
+  }
+}
       function toggleSidebar() {
         const sidebar = document.getElementById('sidebar');
         const button = document.getElementById('toggleButton');
@@ -728,7 +798,27 @@
           },
         }
       });
+
+      // Message in scene1//  
+viewer.on('load', function () {
+  const currentScene = viewer.getScene();
+
+  if (currentScene === 'Outdoor_1' && !outdoor1InfoShown && !outdoor1InfoDismissed) {
+    document.getElementById('scene1InfoBox').style.display = 'block';
+    outdoor1InfoShown = true;
+  } else {
+    document.getElementById('scene1InfoBox').style.display = 'none';
+  }
+});
+
+// Button click handler
+function dismissInfo() {
+  document.getElementById('scene1InfoBox').style.display = 'none';
+  outdoor1InfoDismissed = true;
+}
+
     </script>
+
     <script>
   document.addEventListener("fullscreenchange", () => {
     const fsElement = document.fullscreenElement;
