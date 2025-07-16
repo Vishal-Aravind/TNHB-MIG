@@ -751,5 +751,17 @@
   });
 </script>
 
+<script>
+  function checkOrientation() {
+    const o = screen.orientation || window.orientation;
+    const overlay = document.getElementById('rotateOverlay');
+    const isLandscape = (o.type ? o.type.includes('landscape') : Math.abs(o) === 90);
+    overlay.style.display = isLandscape ? 'none' : 'flex';
+  }
+  window.addEventListener('orientationchange', checkOrientation);
+  window.addEventListener('resize', checkOrientation);
+  checkOrientation();
+</script>
+
   </body> 
   </html>
