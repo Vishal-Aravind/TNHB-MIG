@@ -273,11 +273,6 @@
     <!-- Toggle Button -->
     <button id="toggleButton" class="collapsed" onclick="toggleSidebar()">☰</button>
 
-<div id="rotateOverlay">
-  <img src="rotate.png" alt="Rotate your device" />
-  <span>Please rotate your device<br>to landscape mode</span>
-</div>
-
  <!-- Message box in scene 1-->
 <div id="scene1InfoBox">
   <div class="info-content">
@@ -299,7 +294,7 @@
   height: 100vh;
   background-color: #000;
   color: #fff;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 20px;
   justify-content: center;
   align-items: center;
@@ -325,7 +320,7 @@ function dismissInfo() {
   document.getElementById('scene1InfoBox').style.display = 'none';
   outdoor1InfoShown = true;  // Set flag to true so it won't show again
 }
-  
+ 
 function loadSceneById(id) {
   if (viewer) {
     viewer.loadScene(id);
