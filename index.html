@@ -288,6 +288,28 @@
   </div>
 </div>
 
+<!--Safari-->
+<div id="orientationOverlay" style="
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+">
+  <img src="rotate.png" alt="Rotate Device" style="max-width: 300px;width: 50vw;height: auto; margin-bottom: 24px; animation: breathe 3s ease-in-out infinite">
+  <p>Please rotate your device to landscape mode</p>
+</div>
+
     <!-- Viewer Container -->
     <div id="panorama"></div>
 
@@ -851,6 +873,33 @@ function dismissInfo() {
   window.addEventListener('orientationchange', checkOrientation);
   window.addEventListener('resize', checkOrientation);
   checkOrientation();
+</script>
+
+<script>
+  // Safari 
+  function checkOrientation() {
+    const isLandscape = window.innerWidth > window.innerHeight;
+
+    const overlay = document.getElementById('orientationOverlay');
+    if (isLandscape) {
+      overlay.style.display = 'none';
+    } else {
+      overlay.style.display = 'flex';
+    }
+  }
+
+  window.addEventListener('orientationchange', () => {
+    setTimeout(checkOrientation, 300); // Safari needs delay
+  });
+
+  window.addEventListener('resize', () => {
+    setTimeout(checkOrientation, 300); // Safari-safe
+  });
+
+  // Initial check
+  window.addEventListener('load', () => {
+    setTimeout(checkOrientation, 300);
+  });
 </script>
 
   </body> 
